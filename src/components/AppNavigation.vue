@@ -30,7 +30,8 @@ export default {
 @import '../theme/index.scss';
 
 nav {
-	position: fixed;
+  position: fixed;
+  z-index: 1001;
 	bottom: 0;
 	// max-width: 600px;
 	width: 100%;

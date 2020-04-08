@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <app-header />
-    <router-view/>
+    <transition name="fade">
+      <router-view/>
+    </transition>
     <app-navigation />
   </div>
 </template>
@@ -15,14 +17,22 @@ export default {
     AppHeader,
     AppNavigation
   },
-  data: () => {
+  // data: () => {
 
-  }
+  // }
 }
 </script>
 
-<style>
+<style lang="scss">
 #app {
   padding-bottom: 48px;
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
 }
+
 </style>

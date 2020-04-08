@@ -1,13 +1,16 @@
 <template>
-  <section class="projects" v-if="gotData"> 
-    <h4 class="section-title">Recent Projects</h4>
-    <a href="#" class="project" v-for="post in apiData" :key="post.title.rendered">
-      <div class="image" :style="{ 'background-image': 'url(' + post._embedded['wp:featuredmedia']['0'].source_url + ')' }"></div>
-      <div class="text">
-        <p class="title">{{ post.title.rendered }}</p>
-      </div>
-    </a>
-  </section>
+  <div>
+    <div class="loader" v-loading="!gotData"></div>
+    <section class="projects" v-if="gotData"> 
+      <h4 class="section-title">Recent Projects</h4>
+      <a href="#" class="project" v-for="post in apiData" :key="post.title.rendered">
+        <div class="image" :style="{ 'background-image': 'url(' + post._embedded['wp:featuredmedia']['0'].source_url + ')' }"></div>
+        <div class="text">
+          <p class="title">{{ post.title.rendered }}</p>
+        </div>
+      </a>
+    </section>
+  </div>
 </template>
 
 <script>
@@ -56,6 +59,16 @@ export default {
 <style lang="scss">
 @import '../theme/index.scss';
 
+.loader {
+  min-height: 100vh;
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  // background-color: $--background-color-base;
+  z-index: 1;
+}
+
 .projects {
   padding: 16px;
 
@@ -72,7 +85,7 @@ export default {
     .image {
       height: 360px;
       border-radius: 8px;
-      background: $--color-primary no-repeat center / cover;
+      background: $--color-text-placeholder no-repeat center / cover;
       margin-bottom: 8px;
       // box-shadow: $--shadow-sm;
     }

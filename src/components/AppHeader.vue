@@ -32,6 +32,8 @@ export default {
 
 .app-header {
   padding: 16px;
+  position: relative;
+  z-index: 1000;
   .logo {
   display: flex;
   flex-direction: row;
