@@ -1,0 +1,44 @@
+// Colors
+$--color-primary: #0CA6FC;
+$--color-success: #2DCA73;
+$--color-warning: #FFBE11;
+$--color-danger: #E84762;
+$--color-info: #2BE3E3;
+
+$--color-text-primary: #1C2D41;
+$--color-text-regular: #2C4156;
+$--color-text-secondary: #8794A7;
+$--color-text-placeholder: #E6E9F0;
+
+$--color-white: #FFFFFF;
+$--color-black: #1c2d41;
+$--background-color-base: #F6F7FA;
+
+// icon path required by library
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+// Import Theme after overrides
+@import '~element-ui/packages/theme-chalk/src/index';
+
+// Project Variables
+$--transition-default: all .5s ease-in-out;
+
+$--shadow-xs: 0px 4px 8px -1px rgba(37,44,54,0.1);
+$--shadow-sm: 0px 8px 8px -1px rgba(37,44,54,0.1);
+$--shadow-md: 0px 16px 32px -1px rgba(37,44,54,0.12);
+$--shadow-lg: 0px 24px 60px -1px rgba(37,44,54,0.14);
+
+// Project Specifc Styles
+
+body {
+  margin: 0;
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  background-color: $--background-color-base;
+}
+
+a {
+  transition: $--transition-default;
+  color: $--color-primary;
+  text-decoration: none;
+}
