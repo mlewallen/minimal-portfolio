@@ -1,5 +1,5 @@
 <template>
-  <header class="app-header">
+  <header class="app-header" :class="{ 'transparent': $route.path == '/' }">
     <el-row type="flex" justify="space-between">
       <el-col class="logo">
         <img src="https://cdn.dribbble.com/users/2274105/avatars/normal/4b096f602b73fa281991a454ff739d6d.png?1569453556" alt="Mike Lewallen Senior UI/UX Designer" class="image">
@@ -34,60 +34,73 @@ export default {
   padding: 16px;
   position: relative;
   z-index: 1000;
-  .logo {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  .image {
-    height: 48px;
-    border-radius: 4px;
-    margin-right: 8px;
-    @media screen and (max-width: 600px) {
-      height: 36px;
-    }
-  }
-  .text {
-    font-weight: 600;
-    color: $--color-text-primary;
-    font-size: 18px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    text-align: left;
-    @media screen and (max-width: 600px) {
-      font-size: 14px;
-    }
-    .subtext {
-      color: $--color-text-regular;
-      font-weight: 600;
-      font-size: 13px;
-      margin-top: 2px;
-      opacity: .6;
-      @media screen and (max-width: 600px) {
-        font-size: 11px;
+  box-sizing: border-box;
+  &.transparent {
+    position: absolute;
+    width: 100%;
+    .logo {
+      .text {
+        color: white;
+        .subtext {
+          color: white;
+        }
       }
     }
   }
-}
-.links {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  .link {
-    font-size: 24px;
-    width: 48px;
-    height: 48px;
+  .logo {
     display: flex;
-    flex-direction: column ;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: transparent;
-    border-radius: 27px;
-    &:hover {
-      background: lighten($--color-text-secondary,35%);
+    .image {
+      height: 48px;
+      border-radius: 4px;
+      margin-right: 8px;
+      @media screen and (max-width: 600px) {
+        height: 36px;
+      }
+    }
+    .text {
+      font-weight: 600;
+      color: $--color-text-primary;
+      font-size: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      text-align: left;
+      @media screen and (max-width: 600px) {
+        font-size: 14px;
+      }
+      .subtext {
+        color: $--color-text-regular;
+        font-weight: 600;
+        font-size: 13px;
+        margin-top: 2px;
+        opacity: .6;
+        @media screen and (max-width: 600px) {
+          font-size: 11px;
+        }
+      }
     }
   }
-}
+  .links {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    .link {
+      font-size: 24px;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      flex-direction: column ;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: transparent;
+      border-radius: 27px;
+      &:hover {
+        background: lighten($--color-text-secondary,35%);
+      }
+    }
+  }
 }
 </style>

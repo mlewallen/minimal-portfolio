@@ -19,7 +19,7 @@ export default {
         { title: 'Work', route: '/work', icon: 'uil uil-cube' },
         { title: 'Blog', route: '/blog', icon: 'uil uil-document-layout-left' },
         // { title: 'Contact', route: '/', icon: 'uil uil-envelope-add' },
-        { title: 'More', route: '#', icon: 'uil uil-ellipsis-h' },
+        { title: 'More', route: '#more', icon: 'uil uil-ellipsis-h' },
       ]
     }
   }
