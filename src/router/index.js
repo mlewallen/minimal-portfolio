@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Work from '../views/Work.vue'
+import Blog from '../views/Blog.vue'
 
 Vue.use(VueRouter)
 
@@ -19,7 +21,17 @@ Vue.use(VueRouter)
     component: function () {
       return import(/* webpackChunkName: "about" */ '../views/About.vue')
     }
-  }
+  },
+  {
+    path: '/work',
+    name: 'Work',
+    component: Work
+  },
+  {
+    path: '/blog',
+    name: 'Blog',
+    component: Blog
+  },
 ]
 
 const router = new VueRouter({

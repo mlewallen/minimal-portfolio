@@ -1,29 +1,12 @@
 <template>
   <div class="content">
     <!-- <div class="loader" v-loading="!gotProjects"></div> -->
-    <h4 class="section-title"><i class="uil uil-cube"></i> Recent Work</h4>
+    <h4 class="section-title"><i class="uil uil-cube"></i> Work</h4>
     <section class="projects" v-if="gotProjects"> 
       <a href="#" class="project" v-for="project in projects" :key="project.title.rendered">
         <div class="image" :style="{ 'background-image': 'url(' + project._embedded['wp:featuredmedia']['0'].source_url + ')' }"></div>
         <div class="text">
           <p class="title">{{ project.title.rendered }}</p>
-        </div>
-      </a>
-      <a href="#" class="project cta">
-        <div class="cta-block">
-          <div class="icon"><i class="uil uil-eye"></i></div>
-          <h5 class="cta-text">View more</h5>
-        </div>
-      </a>
-    </section>
-    <!-- <div class="loader" v-loading="!gotPosts"></div> -->
-    <h4 class="section-title"><i class="uil uil-document-layout-left"></i> Recent Blogs</h4>
-    <section class="posts" v-if="gotPosts"> 
-      <a href="#" class="post" v-for="post in posts" :key="post.title.rendered">
-        <div class="image" :style="{ 'background-image': 'url(' + post._embedded['wp:featuredmedia']['0'].source_url + ')' }"></div>
-        <div class="text">
-          <p class="title">{{ post.title.rendered }}</p>
-          <div class="excerpt" v-html="post.excerpt.rendered"></div>
         </div>
       </a>
     </section>
@@ -34,30 +17,21 @@
 import axios from 'axios';
 
 export default {
-  name: 'Home',
+  name: 'Work',
   components: {
     
   },
   data: () => {
     return {
       api: {
-        posts: 'https://www.mlewallen.com/wp-json/wp/v2/posts?_embed',
         projects: 'https://www.mlewallen.com/wp-json/wp/v2/projects?_embed'
       },
       gotProjects: false,
-      gotPosts: false,
-      posts: [],
       projects: []
     }
   },
   methods: {
-    fixedHeader(y) {
-      if (y > 81) {
-        document.querySelector(".appbar").classList.add("fixed")
-      } else {
-        document.querySelector('.appbar').classList.remove("fixed")
-      }
-    }
+
   },
   computed: {
 
@@ -67,15 +41,6 @@ export default {
     .then(response => {
       this.projects = response.data
       this.gotProjects = true
-    })
-    .catch(e => {
-      console.log(e)
-    }),
-    axios.get(this.api.posts)
-    .then(response => {
-      this.posts = response.data
-      this.gotPosts = true
-      console.log(this.posts)
     })
     .catch(e => {
       console.log(e)
@@ -112,16 +77,16 @@ export default {
 
 .projects {
   // padding: 16px;
-  display: flex;
-  flex-direction: row;
-  overflow-x: auto;
-  flex-wrap: nowrap;
-  -webkit-overflow-scrolling: touch;
+  // display: flex;
+  // flex-direction: row;
+  // overflow-x: auto;
+  // flex-wrap: nowrap;
+  // -webkit-overflow-scrolling: touch;
 
   .project {
     display: block;
     position: relative;
-    min-width: 300px;
+    // min-width: 300px;
     margin-left: 16px;
     margin-right: 16px;
     margin-bottom: 16px;
@@ -190,40 +155,6 @@ export default {
       left: 0;
       right: 0;
       background: linear-gradient(180deg, rgba($--color-black,.2), rgba(0,0,0,0));
-    }
-  }
-}
-
-.posts {
-  padding: 16px;
-
-  .post {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 24px;
-    // justify-content: space-between;
-
-    .image {
-      height: 64px;
-      width: 64px;
-      border-radius: 8px;
-      background: $--color-text-placeholder no-repeat center / cover;
-      margin-right: 16px;
-    }
-    .text {
-      width: calc(100% - 72px);
-
-      .title {
-        font-size: 18px;
-        font-weight: 600;
-        margin-top: 0;
-        line-height: 1.5;
-        margin-bottom: 16px;
-      }
-      .excerpt {
-        font-size: 14px;
-        color: $--color-text-regular;
-      }
     }
   }
 }

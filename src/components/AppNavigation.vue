@@ -16,10 +16,10 @@ export default {
     return {
       menuItems: [
         { title: 'Home', route: '/', icon: 'uil uil-home' },
-        { title: 'Work', route: '/', icon: 'uil uil-cube' },
-        { title: 'Blog', route: '/about', icon: 'uil uil-document-layout-left' },
+        { title: 'Work', route: '/work', icon: 'uil uil-cube' },
+        { title: 'Blog', route: '/blog', icon: 'uil uil-document-layout-left' },
         // { title: 'Contact', route: '/', icon: 'uil uil-envelope-add' },
-        { title: 'More', route: '/', icon: 'uil uil-ellipsis-h' },
+        { title: 'More', route: '#', icon: 'uil uil-ellipsis-h' },
       ]
     }
   }
