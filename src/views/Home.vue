@@ -1,7 +1,18 @@
 <template>
   <div class="content">
+    <div class="intro" :style="{ 'background-image': 'url(' + intro.bgURL + ')' }">
+      <h1>{{ intro.statement }}</h1>
+      <!-- <el-row justify="space-between">
+        <el-col :span="12">
+          <el-button type="primary">My Process</el-button>
+        </el-col>
+        <el-col :span="12">
+          <el-button type="text">About me</el-button>
+        </el-col>
+      </el-row> -->
+    </div>
     <!-- <div class="loader" v-loading="!gotProjects"></div> -->
-    <h4 class="section-title"><i class="uil uil-cube"></i> Recent Work</h4>
+    <h4 class="section-title"><i class="uil uil-cube"></i> <span class="text-white">Recent Work</span></h4>
     <section class="projects" v-if="gotProjects"> 
       <a href="#" class="project" v-for="project in projects" :key="project.title.rendered">
         <div class="image" :style="{ 'background-image': 'url(' + project._embedded['wp:featuredmedia']['0'].source_url + ')' }"></div>
@@ -9,22 +20,24 @@
           <p class="title">{{ project.title.rendered }}</p>
         </div>
       </a>
-      <a href="#" class="project cta">
-        <div class="cta-block">
+      <router-link to="/work" href="#" class="project cta">
+        <!-- <div class="cta-block">
           <div class="icon"><i class="uil uil-eye"></i></div>
           <h5 class="cta-text">View more</h5>
-        </div>
-      </a>
+        </div> -->
+        <el-button type="primary" icon="el-icon-view">View More</el-button>
+      </router-link>
     </section>
     <!-- <div class="loader" v-loading="!gotPosts"></div> -->
     <h4 class="section-title"><i class="uil uil-document-layout-left"></i> Recent Blogs</h4>
     <section class="posts" v-if="gotPosts"> 
       <a href="#" class="post" v-for="post in posts" :key="post.title.rendered">
-        <div class="image" :style="{ 'background-image': 'url(' + post._embedded['wp:featuredmedia']['0'].source_url + ')' }"></div>
         <div class="text">
+          <span class="overline">2 days ago</span>
           <p class="title">{{ post.title.rendered }}</p>
-          <div class="excerpt" v-html="post.excerpt.rendered"></div>
+          <!-- <div class="excerpt" v-html="post.excerpt.rendered"></div> -->
         </div>
+        <div class="image" :style="{ 'background-image': 'url(' + post._embedded['wp:featuredmedia']['0'].source_url + ')' }"></div>
       </a>
     </section>
   </div>
@@ -47,7 +60,13 @@ export default {
       gotProjects: false,
       gotPosts: false,
       posts: [],
-      projects: []
+      projects: [],
+      intro: {
+        // bgURL: 'https://images.pexels.com/photos/2471235/pexels-photo-2471235.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+        // bgURL: 'https://images.pexels.com/photos/1910236/pexels-photo-1910236.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+        bgURL: 'https://images.pexels.com/photos/2471234/pexels-photo-2471234.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+        statement: 'I create experiences that users & businesses love.'
+      },
     }
   },
   methods: {
@@ -87,6 +106,47 @@ export default {
 <style lang="scss" scoped>
 @import '../theme/index.scss';
 
+.intro {
+  background: $--color-black no-repeat center / cover;;
+  // height: calc(100vh - 156px);
+  height: calc(100vh - 300px);
+  margin-bottom: -150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 16px;
+
+  h1 {
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: $--color-white;
+    position: relative;
+    z-index: 1;
+    padding-bottom: 110px;
+
+    // &::before {
+    //   content: 'I create experiences that users & businesses love.';
+    //   font-size: 40px;
+    //   text-transform: uppercase;
+    //   font-weight: 700;
+    //   color: $--color-black;
+    //   position: absolute;
+    //   z-index: -1;
+    //   transform: translate(3px, 4px);
+    // }
+  }
+
+  .el-button {
+
+    &.el-button--text  {
+      text-transform: uppercase;
+      color: $--color-white;
+    }
+  }
+}
+
 .loader {
   min-height: 100vh;
   position: fixed !important;
@@ -103,6 +163,10 @@ export default {
   padding-left: 16px;
   display: flex;
   align-items: center;
+
+  .text-white {
+    color: $--color-white !important;
+  }
 
   i {
     font-size: 32px;
@@ -135,6 +199,10 @@ export default {
       font-size: 48px;
       position: relative;
       z-index: 1;
+
+      .el-button {
+        margin-left: -32px;
+      }
 
       .cta-block {
         padding: 24px;
@@ -201,24 +269,33 @@ export default {
     display: flex;
     flex-direction: row;
     margin-bottom: 24px;
-    // justify-content: space-between;
+    justify-content: space-between;
+    align-items: center;
 
     .image {
-      height: 64px;
-      width: 64px;
+      height: 124px;
+      width: 124px;
       border-radius: 8px;
       background: $--color-text-placeholder no-repeat center / cover;
-      margin-right: 16px;
+      margin-left: 16px;
     }
     .text {
-      width: calc(100% - 72px);
+      flex: 1;
+
+      .overline {
+        font-size: 12px;
+        color: $--color-text-secondary;
+        display: block;
+        margin-bottom: 8px;
+      }
 
       .title {
-        font-size: 18px;
-        font-weight: 600;
+        font-size: 20px;
+        font-weight: 700;
         margin-top: 0;
         line-height: 1.5;
         margin-bottom: 16px;
+        color: $--color-black;
       }
       .excerpt {
         font-size: 14px;
