@@ -2,7 +2,7 @@
   <div id="app">
     <app-header />
     <transition name="fade" mode="out-in">
-      <router-view/>
+      <router-view />
     </transition>
     <app-navigation />
   </div>
@@ -25,14 +25,13 @@ export default {
 
 <style lang="scss">
 #app {
-  padding-bottom: 48px;
+  padding-bottom: 80px;
 
   .fade-enter-active, .fade-leave-active {
     transition: all .5s ease-in-out;
   }
   .fade-enter, .fade-leave-to {
     opacity: 0;
-    transform: translateY(5px);
   }
 }
 
