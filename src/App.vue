@@ -37,11 +37,15 @@ export default {
   padding-bottom: 80px;
 
   .fade-enter-active, .fade-leave-active {
-    transition: all .25s ease;
+    transition: all .35s ease;
   }
-  .fade-enter, .fade-leave-to {
+  .fade-enter {
     opacity: 0;
-    transform: translateY(-2px);
+    transform: translateY(-4px);
+  }
+  .fade-leave-to {
+    opacity: 0;
+    transform: translateY(-4px);
   }
 
   .loader {

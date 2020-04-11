@@ -26,19 +26,6 @@ export default {
 <style lang="scss" scoped>
 @import '../theme/index.scss';
 
-.section-title {
-  font-size: 24px;
-  margin-top: 16px;
-  padding-left: 16px;
-  display: flex;
-  align-items: center;
-
-  i {
-    font-size: 32px;
-    color: $--color-primary;
-  }
-}
-
 .projects {
   display: block;
 

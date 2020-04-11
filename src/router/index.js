@@ -47,7 +47,7 @@ const scrollBehavior = () => {
         x: 0,
         y: 0
       })
-    }, 250)
+    }, 350)
   })
 }
 

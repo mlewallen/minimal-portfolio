@@ -1,10 +1,10 @@
 <template>
   <router-link v-if="project" :to="`/work/${project.id}`" class="project">
-      <div class="image" :style="{ 'background-image': 'url(' + project._embedded['wp:featuredmedia']['0'].source_url + ')' }"></div>
-      <div class="text">
-        <p class="title">{{ project.title.rendered }}</p>
-      </div>
-    </router-link>
+    <div class="image" :style="{ 'background-image': 'url(' + project._embedded['wp:featuredmedia']['0'].source_url + ')' }"></div>
+    <div class="text">
+      <p class="title">{{ project.title.rendered }}</p>
+    </div>
+  </router-link>
 </template>
 
 <script>
@@ -23,3 +23,12 @@ export default {
 }
 </script>
 
+<style lang="scss">
+@import '../theme/index.scss';
+
+.text {
+  .title {
+    color: $--color-white;
+  }
+}
+</style>
