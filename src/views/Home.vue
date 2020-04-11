@@ -2,6 +2,7 @@
   <div class="content">
     <div class="intro">
       <h1>{{ intro.statement }}</h1>
+      <app-logo class="logo" />
     </div>
     <h4 class="section-title"><i class="uil uil-cube"></i> <span class="text-white">Recent Work</span></h4>
     <section class="projects"> 
@@ -21,12 +22,14 @@
 </template>
 
 <script>
+import AppLogo from '../components/AppLogo'
 import AppCardPostSnip from '../components/AppCardPostSnip'
 import AppCardWorkSnip from '../components/AppCardWorkSnip'
 
 export default {
   name: 'Home',
   components: {
+    AppLogo,
     AppCardPostSnip,
     AppCardWorkSnip
   },
@@ -87,11 +90,25 @@ export default {
     }
   }
 
-  .el-button {
+  .logo {
+    position: fixed;
+    height: 300px;
+    right: -150px;
 
-    &.el-button--text  {
-      text-transform: uppercase;
-      color: $--color-white;
+    @keyframes lineMove {
+      0% {
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dashoffset: 500;
+      }
+    }
+
+    .cls-1{
+      fill:rgba(255,255,255,0);
+      stroke-dasharray: 400px;
+      stroke: rgba($--color-primary,.2);
+      animation: lineMove 10s ease infinite;
     }
   }
 }

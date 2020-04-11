@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="loader" v-loading="loading">
-      <app-logo v-if="false" class="logo dark" />
+      <app-logo v-show="loading" class="logo dark" />
     </div>
     <app-header />
     <transition name="fade" mode="out-in">
@@ -67,53 +67,33 @@ export default {
       .circular {
         height: 64px;
         width: 64px;
-        // display: none;
+        display: none;
       }
     }
 
     .logo.dark {
-      position: absolute;
-      z-index: 2001;
+      position: fixed;
+      z-index: 10001;
       top: 50%;
       left: 50%;
+      width: 200px;
       transform: translate(-50%,-50%);
 
-      .cls-1 {
-        fill:$--color-primary;
-        animation: colorFlash 3s infinite ease;
-        transition: $--transition-default;
+      @keyframes lineMove {
+        0% {
+        stroke-dashoffset: 0;
+        }
+        50% {
+          stroke-dashoffset: 500;
+        }
       }
 
-      @keyframes colorFlash {
-        // 0% {
-        //   fill: $--color-primary;
-        // }
-        // 25% {
-        //   fill: $--color-success;
-        // }
-        // 50% {
-        //   fill: $--color-info;
-        // }
-        // 75% {
-        //   fill: $--color-black;
-        // }
-          0% {
-            stroke-dashoffset: 5;
-          }
-          30% {
-            stroke-dashoffset: 0;
-            fill-opacity: 0;
-            stroke-dasharray: 5;
-          }
-          50% {
-            stroke-dashoffset: 0;
-            fill-opacity: 1;
-            filter: shadow(0 3px 10px #FF853F);
-          }
-          100% {
-            stroke-dashoffset: 0;
-            fill-opacity: 1;
-          }
+      .cls-1{
+        fill:rgba(255,255,255,0);
+        stroke-dasharray: 100px;
+        stroke: $--color-primary;
+        stroke-width: 2px;
+        animation: lineMove 5s ease infinite;
       }
     }
   }
