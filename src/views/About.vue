@@ -49,6 +49,7 @@
           </div>
         </el-timeline-item>
       </el-timeline>
+      <el-link class="button-block" :href="user.linkedin.link" target="_blank"><el-button type="primary">View My LinkedIn</el-button></el-link>
     </el-card>
     <el-card class="education">
       <h5>Education</h5>
@@ -62,7 +63,7 @@
       </el-row>
       <el-row type="flex" justify="space-between">
         <el-col :span="12">
-          <span class="label"><i class="uil uil-calendar-alt"></i> Graduction</span>
+          <span class="label"><i class="uil uil-calendar-alt"></i> Graduation</span>
         </el-col>
         <el-col :span="12">
           <span class="value">{{ user.about.education.graduation }}</span>
@@ -91,60 +92,9 @@
 <script>
 export default {
   name: 'About',
-  data: () => {
-    return {
-      user: {
-        about: {
-          statement: 'I help businesses connect their products to their users through process and measurability.',
-          name: {
-            first: 'Mike',
-            last: 'Lewallen'
-          },
-          location: 'Rockville, MD',
-          title: 'Product Designer',
-          yoe: '4',
-          education: {
-            degree: 'B.A.',
-            school: 'Salisbury University',
-            graduation: 'May 2016',
-            gpa: '3.75'
-          }
-        },
-        linkedin: {
-          pic: 'https://media-exp1.licdn.com/dms/image/C4E03AQHM7M-A3Zt9zQ/profile-displayphoto-shrink_200_200/0?e=1591833600&v=beta&t=9tX8jdmyQLVIqnop4NxU1euLZRvYgLfyHSJx_r7WQOc',
-          link: 'https://www.linkedin.com/in/michaelwlewallen/'
-        },
-        experience: [
-          {
-            company: 'IronNet Cybersecurity',
-            link: 'https://www.ironnet.com',
-            title: 'Senior UI/UX Designer',
-            timeframe: ['August 2019','Present'],
-            logo: 'https://media-exp1.licdn.com/dms/image/C4D0BAQEMvv0tY6VWzA/company-logo_100_100/0?e=1594857600&v=beta&t=Q8LvTGRcjF9sa5z0xlRsHJr8oxmaABENNc684CYqGAY'
-          },
-          {
-            company: 'DealerOn',
-            link: 'https://www.dealeron.com',
-            title: 'Lead UX Designer',
-            timeframe: ['January 2018','August 2019'],
-            logo: 'https://media-exp1.licdn.com/dms/image/C510BAQFmywm4l58hFw/company-logo_100_100/0?e=1594857600&v=beta&t=kEniqzANaj9EGwm8RZ4IVTJxcJExN3sY0774e9qMIOI'
-          },
-          {
-            company: '270net Technologies',
-            link: 'https://270net.com',
-            title: 'UI/UX Designer & Web Developer',
-            timeframe: ['June 2016','January 2018'],
-            logo: 'https://media-exp1.licdn.com/dms/image/C4D0BAQH1YEMzMUketw/company-logo_100_100/0?e=1594857600&v=beta&t=70hDfkg8b_5frYq3ItKjbUhhPfI7D_AK_YaqB__nR7Y'
-          },
-          {
-            company: 'Dew Point Media',
-            link: 'https://www.dewpointmedia.net',
-            title: 'UI/UX Designer & Web Developer',
-            timeframe: ['January 2016','June 2016'],
-            logo: 'https://media-exp1.licdn.com/dms/image/C4E0BAQGkfPjkHvYS5g/company-logo_100_100/0?e=1594857600&v=beta&t=Ea75aCiPbsZnDDX8JzGnSdKCyMA4Uwsc985wz-Oyh8w'
-          }
-        ]
-      }
+  computed: {
+    user: function () {
+      return this.$store.state.user
     }
   },
   methods: {
@@ -221,6 +171,7 @@ export default {
 }
 
 .experience {
+
   .el-timeline {
     padding-left: 0;
 
@@ -267,6 +218,12 @@ export default {
       font-size: 12px;
       color: $--color-text-secondary;
     }
+  }
+}
+
+.education {
+  h5 {
+    margin-bottom: 0;
   }
 }
 </style>

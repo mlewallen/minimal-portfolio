@@ -21,13 +21,9 @@ export default {
   components: {
     AppLogo
   },
-  data: () => {
-    return {
-      socialLinks: [
-        { path: 'https://dribbble.com/mlewallen', label: 'Dribbble', icon: 'uil uil-dribbble' },
-        { path: 'https://github.com/mlewallen', label: 'Github', icon: 'uil uil-github-alt' },
-        { path: 'https://www.linkedin.com/in/michaelwlewallen/', label: 'Linkedin', icon: 'uil uil-linkedin-alt' }
-      ]
+  computed: {
+    socialLinks: function () {
+      return this.$store.state.user.socialLinks
     }
   }
 }
@@ -57,6 +53,14 @@ export default {
         .subtext {
           color: white;
           transition: $--transition-default;
+        }
+      }
+    }
+
+    .links {
+      .link {
+        &:hover {
+          background: rgba(255,255,255,.075);
         }
       }
     }

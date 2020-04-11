@@ -52,6 +52,16 @@ a {
   font-weight: 600;
   font-size: 16px;
   letter-spacing: 1px;
+
+  &.button-block {
+    display: block;
+    width: 100%;
+  }
+}
+
+.button-block {
+  display: block;
+  width: 100%;
 }
 
 .section-title {

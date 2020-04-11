@@ -3,9 +3,8 @@
     <div class="intro">
       <h1>{{ intro.statement }}</h1>
     </div>
-    <!-- <div class="loader" v-loading="!gotProjects"></div> -->
     <h4 class="section-title"><i class="uil uil-cube"></i> <span class="text-white">Recent Work</span></h4>
-    <section class="projects" v-if="gotProjects"> 
+    <section class="projects"> 
       <a href="#" class="project" v-for="project in projects" :key="project.title.rendered">
         <div class="image" :style="{ 'background-image': 'url(' + project._embedded['wp:featuredmedia']['0'].source_url + ')' }"></div>
         <div class="text">
@@ -19,73 +18,47 @@
         </div>
       </router-link>
     </section>
-    <!-- <div class="loader" v-loading="!gotPosts"></div> -->
     <h4 class="section-title"><i class="uil uil-document-layout-left"></i> Recent Blogs</h4>
-    <section class="posts" v-if="gotPosts"> 
+    <section class="posts"> 
       <a href="#" class="post" v-for="post in posts" :key="post.title.rendered">
+        <div class="image" :style="{ 'background-image': 'url(' + post._embedded['wp:featuredmedia']['0'].source_url + ')' }"></div>
         <div class="text">
-          <span class="overline">2 days ago</span>
+          <span class="overline">{{ createDate(post.date) }}</span>
           <p class="title" v-html="post.title.rendered"></p>
         </div>
-        <div class="image" :style="{ 'background-image': 'url(' + post._embedded['wp:featuredmedia']['0'].source_url + ')' }"></div>
       </a>
     </section>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import moment from 'moment'
 
 export default {
   name: 'Home',
-  components: {
-    
-  },
   data: () => {
     return {
-      api: {
-        posts: 'https://www.mlewallen.com/wp-json/wp/v2/posts?_embed',
-        projects: 'https://www.mlewallen.com/wp-json/wp/v2/projects?_embed'
-      },
-      gotProjects: false,
-      gotPosts: false,
-      posts: [],
-      projects: [],
       intro: {
         statement: 'I create experiences that users & businesses love.'
       },
     }
   },
-  methods: {
-    fixedHeader(y) {
-      if (y > 81) {
-        document.querySelector(".appbar").classList.add("fixed")
-      } else {
-        document.querySelector('.appbar').classList.remove("fixed")
-      }
+  computed: {
+    posts: function () {
+      return this.$store.state.posts
+    },
+    projects: function () {
+      return this.$store.state.projects
     }
   },
-  computed: {
-
+  methods: {
+    createDate (date) {
+      return moment(date, "YYYYMMDD").fromNow();
+    }
   },
-  mounted() {
-    axios.get(this.api.projects)
-    .then(response => {
-      this.projects = response.data
-      this.gotProjects = true
-    })
-    .catch(e => {
-      console.log(e)
-    }),
-    axios.get(this.api.posts)
-    .then(response => {
-      this.posts = response.data
-      this.gotPosts = true
-      console.log(this.posts)
-    })
-    .catch(e => {
-      console.log(e)
-    })
+  mounted () {
+    console.log('Posts: ', this.posts);
+    console.log('Projects: ', this.projects);
   }
 }
 </script>
@@ -122,10 +95,10 @@ export default {
       text-transform: uppercase;
       font-weight: 700;
       color: transparent;
-      -webkit-text-stroke: 1px rgba(255,255,255,.75);
+      -webkit-text-stroke: 1px rgba($--color-primary, .5);
       position: absolute;
       z-index: -1;
-      transform: translate(3px, 4px);
+      transform: translate(4px, 5px);
     }
   }
 
@@ -136,15 +109,6 @@ export default {
       color: $--color-white;
     }
   }
-}
-
-.loader {
-  min-height: 100vh;
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1;
 }
 
 .projects {
@@ -251,7 +215,7 @@ export default {
       width: 124px;
       border-radius: 8px;
       background: $--color-text-placeholder no-repeat center / cover;
-      margin-left: 16px;
+      margin-right: 16px;
     }
     .text {
       flex: 1;
@@ -261,12 +225,14 @@ export default {
         color: $--color-text-secondary;
         display: block;
         margin-bottom: 8px;
+        text-transform: capitalize;
       }
 
       .title {
         font-size: 18px;
         font-weight: 700;
         margin-top: 0;
+        margin-bottom: 0px;
         line-height: 1.3;
         color: $--color-black;
       }

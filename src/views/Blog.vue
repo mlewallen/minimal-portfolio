@@ -1,8 +1,7 @@
 <template>
   <div class="content">
-    <!-- <div class="loader" v-loading="!gotPosts"></div> -->
     <h4 class="section-title"><i class="uil uil-document-layout-left"></i> Recent Blogs</h4>
-    <section class="posts" v-if="gotPosts"> 
+    <section class="posts"> 
       <a href="#" class="post" v-for="post in posts" :key="post.title.rendered">
         <div class="image" :style="{ 'background-image': 'url(' + post._embedded['wp:featuredmedia']['0'].source_url + ')' }"></div>
         <div class="text">
@@ -15,67 +14,18 @@
 </template>
 
 <script>
-import axios from 'axios';
-
 export default {
   name: 'Home',
-  components: {
-    
-  },
-  data: () => {
-    return {
-      api: {
-        posts: 'https://www.mlewallen.com/wp-json/wp/v2/posts?_embed'
-      },
-      gotPosts: false,
-      posts: []
-    }
-  },
-  methods: {
-
-  },
   computed: {
-
-  },
-  mounted() {
-    axios.get(this.api.posts)
-    .then(response => {
-      this.posts = response.data
-      this.gotPosts = true
-      console.log(this.posts)
-    })
-    .catch(e => {
-      console.log(e)
-    })
+    posts: function () {
+      return this.$store.state.posts
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 @import '../theme/index.scss';
-
-.loader {
-  min-height: 100vh;
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  width: 100%;
-  // background-color: $--background-color-base;
-  z-index: 1;
-}
-
-.section-title {
-  font-size: 24px;
-  margin-top: 16px;
-  padding-left: 16px;
-  display: flex;
-  align-items: center;
-
-  i {
-    font-size: 32px;
-    color: $--color-primary;
-  }
-}
 
 .posts {
   padding: 16px;

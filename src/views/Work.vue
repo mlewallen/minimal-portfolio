@@ -1,8 +1,7 @@
 <template>
   <div class="content">
-    <!-- <div class="loader" v-loading="!gotProjects"></div> -->
     <h4 class="section-title"><i class="uil uil-cube"></i> Work</h4>
-    <section class="projects" v-if="gotProjects"> 
+    <section class="projects"> 
       <a href="#" class="project" v-for="project in projects" :key="project.title.rendered">
         <div class="image" :style="{ 'background-image': 'url(' + project._embedded['wp:featuredmedia']['0'].source_url + ')' }"></div>
         <div class="text">
@@ -14,53 +13,18 @@
 </template>
 
 <script>
-import axios from 'axios';
-
 export default {
   name: 'Work',
-  components: {
-    
-  },
-  data: () => {
-    return {
-      api: {
-        projects: 'https://www.mlewallen.com/wp-json/wp/v2/projects?_embed'
-      },
-      gotProjects: false,
-      projects: []
-    }
-  },
-  methods: {
-
-  },
   computed: {
-
-  },
-  mounted() {
-    axios.get(this.api.projects)
-    .then(response => {
-      this.projects = response.data
-      this.gotProjects = true
-    })
-    .catch(e => {
-      console.log(e)
-    })
+    projects: function () {
+      return this.$store.state.projects
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 @import '../theme/index.scss';
-
-.loader {
-  min-height: 100vh;
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  width: 100%;
-  // background-color: $--background-color-base;
-  z-index: 1;
-}
 
 .section-title {
   font-size: 24px;

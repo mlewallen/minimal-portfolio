@@ -15,5 +15,9 @@ Vue.config.productionTip = false
 new Vue({
   router,
   store,
+  created () {
+    this.$store.dispatch('getProjects')
+    this.$store.dispatch('getPosts')
+  },
   render: function (h) { return h(App) }
 }).$mount('#app')
