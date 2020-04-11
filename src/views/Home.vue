@@ -67,6 +67,7 @@ export default {
   align-items: center;
   justify-content: space-evenly;
   padding: 96px 16px 64px;
+  overflow: hidden;
 
   h1 {
     font-size: 40px;

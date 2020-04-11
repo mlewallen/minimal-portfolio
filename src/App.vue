@@ -81,19 +81,20 @@ export default {
 
       @keyframes lineMove {
         0% {
-        stroke-dashoffset: 0;
-        }
-        50% {
           stroke-dashoffset: 500;
+        }
+        100% {
+          stroke-dashoffset: 100;
+          fill: $--color-primary;
         }
       }
 
       .cls-1{
-        fill:rgba(255,255,255,0);
+        fill: transparent;
         stroke-dasharray: 100px;
         stroke: $--color-primary;
-        stroke-width: 2px;
-        animation: lineMove 5s ease infinite;
+        stroke-width: 3px;
+        animation: lineMove 3s ease infinite;
       }
     }
   }
