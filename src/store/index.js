@@ -71,15 +71,23 @@ export default new Vuex.Store({
   state: {
     user: user,
     posts: [],
+    posts_home: [],
     projects: [],
+    projects_home: [],
     loading: true
   },
   mutations: {
     SET_POSTS (state, posts) {
       state.posts = posts
     },
+    SET_POSTS_HOME (state, posts_home) {
+      state.posts_home = posts_home
+    },
     SET_PROJECTS (state, projects) {
       state.projects = projects
+    },
+    SET_PROJECTS_HOME (state, projects_home) {
+      state.projects_home = projects_home
     },
     SET_LOADING (state, loading) {
       state.loading = loading
@@ -88,7 +96,7 @@ export default new Vuex.Store({
   actions: {
     getPosts ({commit}) {
       commit('SET_LOADING', true)
-      axios.get(api.posts)
+      axios.get(`${api.posts}&per_page=100`)
       .then(response => {
         commit('SET_POSTS', response.data)
         commit('SET_LOADING', false)
@@ -97,9 +105,20 @@ export default new Vuex.Store({
         console.log(e)
       })
     },
+    getPostsHome ({commit}) {
+      commit('SET_LOADING', true)
+      axios.get(`${api.posts}&per_page=3`)
+      .then(response => {
+        commit('SET_POSTS_HOME', response.data)
+        commit('SET_LOADING', false)
+      })
+      .catch(e => {
+        console.log(e)
+      })
+    },
     getProjects ({commit}) {
       commit('SET_LOADING', true)
-      axios.get(api.projects)
+      axios.get(`${api.projects}&per_page=100`)
       .then(response => {
         commit('SET_PROJECTS', response.data)
         commit('SET_LOADING', false)
@@ -107,8 +126,25 @@ export default new Vuex.Store({
       .catch(e => {
         console.log(e)
       })
+    },
+    getProjectsHome ({commit}) {
+      commit('SET_LOADING', true)
+      axios.get(`${api.projects}&per_page=5`)
+      .then(response => {
+        commit('SET_PROJECTS_HOME', response.data)
+        commit('SET_LOADING', false)
+      })
+      .catch(e => {
+        console.log(e)
+      })
     }
   },
-  modules: {
+  getters: {
+    getPostById: (state) => (id) => {
+      return state.posts.find(post => post.id == id)
+    },
+    getProjectById: (state) => (id) => {
+      return state.projects.find(project => project.id == id)
+    }
   }
 })

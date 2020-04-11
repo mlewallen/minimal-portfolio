@@ -62,6 +62,10 @@ a {
 .button-block {
   display: block;
   width: 100%;
+  .el-button {
+    display: block;
+    width: 100%;
+  }
 }
 
 .section-title {

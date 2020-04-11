@@ -1,8 +1,8 @@
 <template>
   <div class="content">
-    <h4 class="section-title"><i class="uil uil-cube"></i> Work</h4>
+    <h4 v-if="project" class="section-title"><i class="uil uil-cube"></i> {{ project.title.rendered }}</h4>
     <section class="projects"> 
-      <app-card-work-snip v-for="project in projects" :key="project.title.rendered" :project="project" />
+      <app-card-work-snip :project="project" />
     </section>
   </div>
 </template>
@@ -11,13 +11,13 @@
 import AppCardWorkSnip from '../components/AppCardWorkSnip'
 
 export default {
-  name: 'Work',
+  name: 'WorkSingle',
   components: {
     AppCardWorkSnip
   },
   computed: {
-    projects: function () {
-      return this.$store.state.projects
+    project: function () {
+      return this.$store.getters.getProjectById(this.$route.params.id)
     }
   }
 }

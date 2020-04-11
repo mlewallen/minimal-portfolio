@@ -1,21 +1,20 @@
 <template>
   <div class="content">
-    <h4 class="section-title"><i class="uil uil-document-layout-left"></i> Recent Blogs</h4>
+    <h4 class="section-title"><i class="uil uil-document-layout-left"></i> Blog</h4>
     <section class="posts"> 
-      <a href="#" class="post" v-for="post in posts" :key="post.title.rendered">
-        <div class="image" :style="{ 'background-image': 'url(' + post._embedded['wp:featuredmedia']['0'].source_url + ')' }"></div>
-        <div class="text">
-          <p class="title">{{ post.title.rendered }}</p>
-          <div class="excerpt" v-html="post.excerpt.rendered"></div>
-        </div>
-      </a>
+      <app-card-post-snip v-for="post in posts" :key="post.title.rendered" :post="post" />
     </section>
   </div>
 </template>
 
 <script>
+import AppCardPostSnip from '../components/AppCardPostSnip'
+
 export default {
-  name: 'Home',
+  name: 'Blog',
+  components: {
+    AppCardPostSnip
+  },
   computed: {
     posts: function () {
       return this.$store.state.posts

@@ -16,6 +16,8 @@ new Vue({
   router,
   store,
   created () {
+    this.$store.dispatch('getProjectsHome')
+    this.$store.dispatch('getPostsHome')
     this.$store.dispatch('getProjects')
     this.$store.dispatch('getPosts')
   },

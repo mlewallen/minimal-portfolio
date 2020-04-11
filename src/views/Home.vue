@@ -5,13 +5,8 @@
     </div>
     <h4 class="section-title"><i class="uil uil-cube"></i> <span class="text-white">Recent Work</span></h4>
     <section class="projects"> 
-      <a href="#" class="project" v-for="project in projects" :key="project.title.rendered">
-        <div class="image" :style="{ 'background-image': 'url(' + project._embedded['wp:featuredmedia']['0'].source_url + ')' }"></div>
-        <div class="text">
-          <p class="title">{{ project.title.rendered }}</p>
-        </div>
-      </a>
-      <router-link to="/work" href="#" class="project cta">
+      <app-card-work-snip v-for="project in projects" :key="project.title.rendered" :project="project" />
+      <router-link to="/work" class="project cta">
         <div class="cta-block">
           <div class="icon"><i class="uil uil-eye"></i></div>
           <h5 class="cta-text">View more</h5>
@@ -20,22 +15,21 @@
     </section>
     <h4 class="section-title"><i class="uil uil-document-layout-left"></i> Recent Blogs</h4>
     <section class="posts"> 
-      <a href="#" class="post" v-for="post in posts" :key="post.title.rendered">
-        <div class="image" :style="{ 'background-image': 'url(' + post._embedded['wp:featuredmedia']['0'].source_url + ')' }"></div>
-        <div class="text">
-          <span class="overline">{{ createDate(post.date) }}</span>
-          <p class="title" v-html="post.title.rendered"></p>
-        </div>
-      </a>
+      <app-card-post-snip v-for="post in posts" :key="post.title.rendered" :post="post" />
     </section>
   </div>
 </template>
 
 <script>
-import moment from 'moment'
+import AppCardPostSnip from '../components/AppCardPostSnip'
+import AppCardWorkSnip from '../components/AppCardWorkSnip'
 
 export default {
   name: 'Home',
+  components: {
+    AppCardPostSnip,
+    AppCardWorkSnip
+  },
   data: () => {
     return {
       intro: {
@@ -45,25 +39,16 @@ export default {
   },
   computed: {
     posts: function () {
-      return this.$store.state.posts
+      return this.$store.state.posts_home
     },
     projects: function () {
-      return this.$store.state.projects
+      return this.$store.state.projects_home
     }
-  },
-  methods: {
-    createDate (date) {
-      return moment(date, "YYYYMMDD").fromNow();
-    }
-  },
-  mounted () {
-    console.log('Posts: ', this.posts);
-    console.log('Projects: ', this.projects);
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '../theme/index.scss';
 
 .intro {  
