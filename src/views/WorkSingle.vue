@@ -57,6 +57,10 @@ export default {
   }
   .work-single--body {
     padding: 16px;
+    @media screen and (min-width: 600px) {
+      max-width: 600px;
+      margin: 0 auto;
+    }
     figure.wp-caption {
       width: 100% !important;
       margin: 0;

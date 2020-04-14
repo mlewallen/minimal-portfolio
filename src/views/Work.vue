@@ -28,6 +28,11 @@ export default {
 
 .projects {
   display: block;
+  
+  @media screen and (min-width: 600px) {
+    max-width: 600px;
+    margin: 0 auto;
+  }
 
   .project {
     display: block;

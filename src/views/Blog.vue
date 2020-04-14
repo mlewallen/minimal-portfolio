@@ -29,6 +29,11 @@ export default {
 .posts {
   padding: 16px;
 
+  @media screen and (min-width: 600px) {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
   .post {
     display: flex;
     flex-direction: row;

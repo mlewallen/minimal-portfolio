@@ -105,8 +105,15 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../theme/index.scss';
+
+.content {
+  @media screen and (min-width: 600px) {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
 
 .el-card {
   margin: 16px;
