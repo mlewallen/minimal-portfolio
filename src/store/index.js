@@ -3,8 +3,8 @@ import Vuex from 'vuex'
 import axios from 'axios'
 
 const api = {
-  posts: 'https://www.mlewallen.com/wp-json/wp/v2/posts?_embed',
-  projects: 'https://www.mlewallen.com/wp-json/wp/v2/projects?_embed'
+  posts: 'https://www.mlewallen.co/wp-json/wp/v2/posts?_embed',
+  projects: 'https://www.mlewallen.co/wp-json/wp/v2/projects?_embed'
 }
 
 const user = {
