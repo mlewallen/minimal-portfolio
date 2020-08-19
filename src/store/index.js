@@ -30,7 +30,7 @@ const user = {
     { path: 'https://www.linkedin.com/in/michaelwlewallen/', label: 'Linkedin', icon: 'uil uil-linkedin-alt' }
   ],
   linkedin: {
-    pic: 'https://media-exp1.licdn.com/dms/image/C4E03AQHM7M-A3Zt9zQ/profile-displayphoto-shrink_200_200/0?e=1591833600&v=beta&t=9tX8jdmyQLVIqnop4NxU1euLZRvYgLfyHSJx_r7WQOc',
+    pic: 'https://media-exp1.licdn.com/dms/image/C4D03AQHT0pZSuBIs1w/profile-displayphoto-shrink_400_400/0?e=1603324800&v=beta&t=3PD63ONo1DXCRB3V-pymLFcZ0HJwfYmhVY19MLW2miE',
     link: 'https://www.linkedin.com/in/michaelwlewallen/'
   },
   experience: [
@@ -39,28 +39,28 @@ const user = {
       link: 'https://www.ironnet.com',
       title: 'Senior UI/UX Designer',
       timeframe: ['August 2019','Present'],
-      logo: 'https://media-exp1.licdn.com/dms/image/C4D0BAQEMvv0tY6VWzA/company-logo_100_100/0?e=1594857600&v=beta&t=Q8LvTGRcjF9sa5z0xlRsHJr8oxmaABENNc684CYqGAY'
+      logo: 'https://media-exp1.licdn.com/dms/image/C4D0BAQEMvv0tY6VWzA/company-logo_100_100/0?e=1605744000&v=beta&t=D_zfA7STYAWY3bylLG-Q4GvOqXnrbG1nfL6zkLQD6s8'
     },
     {
       company: 'DealerOn',
       link: 'https://www.dealeron.com',
       title: 'Lead UX Designer',
       timeframe: ['January 2018','August 2019'],
-      logo: 'https://media-exp1.licdn.com/dms/image/C510BAQFmywm4l58hFw/company-logo_100_100/0?e=1594857600&v=beta&t=kEniqzANaj9EGwm8RZ4IVTJxcJExN3sY0774e9qMIOI'
+      logo: 'https://media-exp1.licdn.com/dms/image/C510BAQFmywm4l58hFw/company-logo_100_100/0?e=1605744000&v=beta&t=Da5l0ei2iXDGHdioTokklmzjpoU-7FSogAqjj774asM'
     },
     {
       company: '270net Technologies',
       link: 'https://270net.com',
       title: 'UI/UX Designer & Web Developer',
       timeframe: ['June 2016','January 2018'],
-      logo: 'https://media-exp1.licdn.com/dms/image/C4D0BAQH1YEMzMUketw/company-logo_100_100/0?e=1594857600&v=beta&t=70hDfkg8b_5frYq3ItKjbUhhPfI7D_AK_YaqB__nR7Y'
+      logo: 'https://media-exp1.licdn.com/dms/image/C4D0BAQH1YEMzMUketw/company-logo_100_100/0?e=1605744000&v=beta&t=4wVyndXrwdxGeRkf8w74YCo0V7TGMhElJoDJkl0qWdA'
     },
     {
       company: 'Dew Point Media',
       link: 'https://www.dewpointmedia.net',
       title: 'UI/UX Designer & Web Developer',
       timeframe: ['January 2016','June 2016'],
-      logo: 'https://media-exp1.licdn.com/dms/image/C4E0BAQGkfPjkHvYS5g/company-logo_100_100/0?e=1594857600&v=beta&t=Ea75aCiPbsZnDDX8JzGnSdKCyMA4Uwsc985wz-Oyh8w'
+      logo: 'https://media-exp1.licdn.com/dms/image/C4E0BAQGkfPjkHvYS5g/company-logo_100_100/0?e=1605744000&v=beta&t=cyKmK1h_0IkH3ZIOKLrZkcsocazKIocecLCx2_StuaU'
     }
   ]
 }
