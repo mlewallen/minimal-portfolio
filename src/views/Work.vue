@@ -86,7 +86,7 @@ export default {
         content: '';
         position: absolute;
         z-index: 1;
-        background: linear-gradient(120deg, rgba($--color-black,.2), rgba($--color-info, .1));
+        background: linear-gradient(120deg, rgba($--color-black,.65), rgba($--color-info, .1));
         height: 100%;
         width: 100%;
         top: 0;
