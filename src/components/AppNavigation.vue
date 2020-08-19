@@ -21,7 +21,7 @@ export default {
         { title: 'About', route: '/about', icon: 'uil uil-user-circle' },
         { title: 'Work', route: '/work', icon: 'uil uil-cube' },
         { title: 'Blog', route: '/blog', icon: 'uil uil-document-layout-left' },
-        { title: 'More', route: '#more', icon: 'uil uil-ellipsis-h' },
+        // { title: 'More', route: '#more', icon: 'uil uil-ellipsis-h' },
       ]
     }
   }
