@@ -136,7 +136,8 @@ export default {
   -webkit-overflow-scrolling: touch;
 
   @media screen and (min-width: 600px) {
-    max-width: 600px;
+    /* max-width: 600px; */
+    max-width: 100%;
     margin: 0 auto;
   }
 
@@ -198,7 +199,7 @@ export default {
         content: '';
         position: absolute;
         z-index: 1;
-        background: linear-gradient(120deg, rgba($--color-black,.2), rgba($--color-info, .1));
+        background: linear-gradient(120deg, rgba($--color-black,.65), rgba($--color-info, .1));
         height: 100%;
         width: 100%;
         top: 0;
