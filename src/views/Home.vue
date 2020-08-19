@@ -224,6 +224,8 @@ export default {
 
 .posts {
   padding: 16px;
+  position: relative;
+  z-index: 3;
 
   @media screen and (min-width: 600px) {
     max-width: 600px;
