@@ -37,7 +37,7 @@ const user = {
     {
       company: 'IronNet Cybersecurity',
       link: 'https://www.ironnet.com',
-      title: 'Senior UI/UX Designer',
+      title: 'Lead UI/UX Designer',
       timeframe: ['August 2019','Present'],
       logo: 'https://media-exp1.licdn.com/dms/image/C4D0BAQEMvv0tY6VWzA/company-logo_100_100/0?e=1605744000&v=beta&t=D_zfA7STYAWY3bylLG-Q4GvOqXnrbG1nfL6zkLQD6s8'
     },
