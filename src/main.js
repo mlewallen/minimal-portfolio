@@ -1,14 +1,22 @@
 import Vue from 'vue'
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 import './theme/index.scss'
 import App from './App.vue'
 import router from './router'
 import store from './store'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import VueAnalytics from 'vue-analytics'
 
-Vue.use(ElementUI, VueAxios, axios);
+Vue.use(
+  ElementUI, 
+  VueAxios, 
+  axios, 
+  VueAnalytics, {
+  id: 'UA-135960437-2',
+  router
+});
 
 Vue.config.productionTip = false
 
