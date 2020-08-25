@@ -140,11 +140,12 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    getPostById: (state) => (id) => {
-      return state.posts.find(post => post.id == id)
+    getPostById: (state) => (slug) => {
+      // return state.posts.find(post => post.id == id)
+      return state.posts.find(post => post.slug == slug)
     },
-    getProjectById: (state) => (id) => {
-      return state.projects.find(project => project.id == id)
+    getProjectById: (state) => (slug) => {
+      return state.projects.find(project => project.slug == slug)
     }
   }
 })

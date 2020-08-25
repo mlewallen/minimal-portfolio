@@ -14,7 +14,7 @@ export default {
   name: 'BlogSingle',
   computed: {
     post: function () {
-      return this.$store.getters.getPostById(this.$route.params.id)
+      return this.$store.getters.getPostById(this.$route.params.slug)
     },
     user: function () {
       return this.$store.state.user

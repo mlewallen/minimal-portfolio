@@ -14,7 +14,7 @@ export default {
   name: 'WorkSingle',
   computed: {
     project: function () {
-      return this.$store.getters.getProjectById(this.$route.params.id)
+      return this.$store.getters.getProjectById(this.$route.params.slug)
     },
     user: function () {
       return this.$store.state.user

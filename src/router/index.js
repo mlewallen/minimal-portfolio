@@ -6,6 +6,7 @@ import Work from '../views/Work.vue'
 import WorkSingle from '../views/WorkSingle.vue'
 import Blog from '../views/Blog.vue'
 import BlogSingle from '../views/BlogSingle.vue'
+import VueAnalytics from 'vue-analytics'
 
 Vue.use(VueRouter)
 
@@ -26,7 +27,7 @@ Vue.use(VueRouter)
     component: Work
   },
   {
-    path: '/work/:id',
+    path: '/work/:slug',
     component: WorkSingle
   },
   {
@@ -35,7 +36,7 @@ Vue.use(VueRouter)
     component: Blog,
   },
   {
-    path: '/blog/:id',
+    path: '/blog/:slug',
     component: BlogSingle
   }
 ]
@@ -56,5 +57,14 @@ const router = new VueRouter({
   routes,
   scrollBehavior
 })
+
+Vue.config.productionTip = false
+
+Vue.use(
+  VueAnalytics, {
+    id: 'UA-135960437-2',
+    router
+  }
+);
 
 export default router

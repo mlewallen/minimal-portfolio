@@ -1,5 +1,5 @@
 <template>
-  <router-link v-if="project" :to="`/work/${project.id}`" class="project">
+  <router-link v-if="project" :to="`/work/${project.slug}`" class="project">
     <div class="image" :style="{ 'background-image': 'url(' + project._embedded['wp:featuredmedia']['0'].source_url + ')' }"></div>
     <div class="text">
       <p class="title">{{ project.title.rendered }}</p>

@@ -7,27 +7,13 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import VueAnalytics from 'vue-analytics'
 
 Vue.config.productionTip = false
 
 Vue.use(
   ElementUI, 
   VueAxios, 
-  axios, 
-  VueAnalytics, {
-    id: 'UA-135960437-2',
-    router,
-    autoTracking: {
-      pageviewTemplate (route) {
-        return {
-          page: route.path,
-          title: document.title,
-          location: window.location.href
-        }
-      }
-    }
-  }
+  axios
 );
 
 new Vue({
