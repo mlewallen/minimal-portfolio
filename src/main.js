@@ -9,16 +9,17 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueAnalytics from 'vue-analytics'
 
+Vue.config.productionTip = false
+
 Vue.use(
+  VueAnalytics, {
+    id: 'UA-135960437-2',
+    router
+  },
   ElementUI, 
   VueAxios, 
   axios, 
-  VueAnalytics, {
-  id: 'UA-135960437-2',
-  router
-});
-
-Vue.config.productionTip = false
+);
 
 new Vue({
   router,
