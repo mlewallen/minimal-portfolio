@@ -24,3 +24,42 @@ export default {
 }
 </script>
 
+<style lang="scss" scoped>
+@import '../theme/index.scss';
+
+.post {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 24px;
+  justify-content: space-between;
+  align-items: center;
+
+  .image {
+    height: 124px;
+    width: 124px;
+    border-radius: 8px;
+    background: $--color-text-placeholder no-repeat center / cover;
+    margin-right: 16px;
+  }
+  .text {
+    flex: 1;
+
+    .overline {
+      font-size: 12px;
+      color: $--color-text-secondary;
+      display: block;
+      margin-bottom: 8px;
+      text-transform: capitalize;
+    }
+
+    .title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 0px;
+      line-height: 1.3;
+      color: $--color-black;
+    }
+  }
+}
+</style>

@@ -4,20 +4,37 @@
     <span class="overline"><i class="uil uil-schedule"></i> {{ createDate(post.date) }}</span>
     <div class="post-single--image" :style="{ 'background-image': 'url(' + post._embedded['wp:featuredmedia']['0'].source_url + ')' }"></div>
     <div class="post-single--body" v-html="post.content.rendered"></div>
+    <div class="pagination">
+       <app-card-post-snip v-for="post in posts" :key="post.title.rendered" :post="post" />
+    </div>
   </div>
 </template>
 
 <script>
 import moment from 'moment'
+import AppCardPostSnip from '../components/AppCardPostSnip'
 
 export default {
   name: 'BlogSingle',
+  components: {
+    AppCardPostSnip
+  },
   computed: {
     post: function () {
       return this.$store.getters.getPostById(this.$route.params.slug)
     },
     user: function () {
       return this.$store.state.user
+    },
+    posts: function () {
+      let pagers = [];
+      for (let i = 0; i < this.$store.state.posts.length; i++) {
+        if (this.$store.state.posts[i].slug == this.$route.params.slug) {
+          if (i != 0) { pagers.push(this.$store.state.posts[i - 1]) }
+          if (i != this.$store.state.posts.length - 1) { pagers.push(this.$store.state.posts[i + 1]) } 
+        }
+      }
+      return pagers
     }
   },
   methods: {
@@ -54,7 +71,14 @@ export default {
   }
 
   .overline {
-    margin-left: 16px;
+    padding-left: 16px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media screen and (min-width: 600px) {
+      padding-left: 24px;
+    }
 
     i {
       color: $--color-primary;
@@ -65,9 +89,21 @@ export default {
     margin-top: 32px;
     height: 240px;
     background: $--color-text-placeholder no-repeat center / cover;
+
+    @media screen and (min-width: 600px) {
+      height: 50vh;
+    }
   }
 
   .post-single--body {
+    padding: 16px;
+
+    @media screen and (min-width: 600px) {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+  .pagination {
     padding: 16px;
 
     @media screen and (min-width: 600px) {
