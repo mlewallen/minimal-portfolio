@@ -14,9 +14,9 @@ const user = {
       first: 'Mike',
       last: 'Lewallen'
     },
-    location: 'Rockville, MD',
+    location: 'Frederick, MD',
     title: 'Product Designer',
-    yoe: '4',
+    yoe: '6',
     education: {
       degree: 'B.A.',
       school: 'Salisbury University',
@@ -114,7 +114,7 @@ export default new Vuex.Store({
     },
     getPostsHome ({commit}) {
       commit('SET_LOADING', true)
-      axios.get(`${api.posts}&per_page=3`)
+      axios.get(`${api.posts}&per_page=5`)
       .then(response => {
         commit('SET_POSTS_HOME', response.data)
         commit('SET_LOADING', false)
@@ -136,7 +136,7 @@ export default new Vuex.Store({
     },
     getProjectsHome ({commit}) {
       commit('SET_LOADING', true)
-      axios.get(`${api.projects}&per_page=5`)
+      axios.get(`${api.projects}&per_page=10`)
       .then(response => {
         commit('SET_PROJECTS_HOME', response.data)
         commit('SET_LOADING', false)
